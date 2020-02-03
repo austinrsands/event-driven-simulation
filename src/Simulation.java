@@ -20,7 +20,9 @@ public class Simulation {
     private int totalWaitTime;
     private int totalInterArrivalTime;
     private int totalServiceTime;
-
+    private int snapshotIndex = 1;
+    private int snapshotStep = 500;
+    
     // current list of events to be processed
     private EventPriorityQueue eventPriorityQueue;
 
@@ -87,8 +89,9 @@ public class Simulation {
                 }
             }
 
-            if (clock % 500 == 0) {
+            if (clock >= snapshotIndex * snapshotStep) {
                 printSnapshot();
+                snapshotIndex++;
             }
         }
         printStatistics();
@@ -209,9 +212,9 @@ public class Simulation {
      */
     private void printStatistics() {
         System.out.println("The total number of customers processed: " + customerCount);
-        System.out.println("The average inter-arrival time: " + totalInterArrivalTime / customerArrivalsCount);
-        System.out.println("The average service time: " + totalServiceTime / customerArrivalsCount);
-        System.out.println("The average wait time per customer: " + totalWaitTime / customerCount);
+        System.out.println("The average inter-arrival time: " + round2places((double)totalInterArrivalTime / customerArrivalsCount));
+        System.out.println("The average service time: " + round2places((double)totalServiceTime / customerArrivalsCount));
+        System.out.println("The average wait time per customer: " + round2places((double)totalWaitTime / customerCount));
         printTellerQueuesIdlePercents();
         System.out.println("The maximum customer wait time: " + maximumCustomerWaitTime);
         System.out.println("The maximum queue length of any customer queue: " + getMaxTellerQueueLength());
@@ -251,7 +254,11 @@ public class Simulation {
     private void printTellerQueuesIdlePercents() {
         for (int i = 0; i < numTellers; i++) {
             EventQueue tellerQueue = tellerQueues[i];
-            System.out.println("Percent of idle time for teller (" + i + "): " + (int)((double)tellerQueue.getTotalIdleTime() / clock * 100) + "%");
+            System.out.println("Percent of idle time for teller (" + i + "): " + round2places((double)tellerQueue.getTotalIdleTime() / clock * 100) + "%");
         }
+    }
+    
+    private double round2places(double n) {
+    	return Math.round(n * 100) / 100.0;
     }
 }
