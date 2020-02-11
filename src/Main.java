@@ -13,7 +13,8 @@ public class Main {
      * Driver for simulation
      */
     public void run() {
-        Simulation sim = new Simulation(2, 3, 2, 8, 3, 2000);
+    	// Simulation(numTellers, arrivalTimeMean, arrivalTimeVariance, serviceTimeMean, serviceTimeVariance, timeLimit)
+        Simulation sim = new Simulation(5, 3, 2, 8, 3, 300);
         sim.run();
     }
 }

@@ -110,11 +110,24 @@ public class Simulation {
         System.out.println();
     }
     
-//    private void printDiagram() {
-//        for (int i = 0; i < numTellers; i++) {
-//             tellerQueues[i].getCurrentNumber());
-//        }
-//    }
+    /**
+     * Prints a diagram representing queues
+     */
+    private void printDiagram() {
+    	System.out.print("Event Queue: ");
+    	for (int i = 0; i < eventPriorityQueue.getSize(); i++) {
+    		System.out.print("*");
+    	}
+    	System.out.println();
+        for (int i = 0; i < numTellers; i++) {
+        	System.out.print("Teller (" + i + "): ");
+            for (int j = 0; j < tellerQueues[i].getCurrentNumber(); j++) {
+            	System.out.print("*");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 
     /**
      * Creates an arrival event and adds it to the priority queue
@@ -268,6 +281,11 @@ public class Simulation {
         }
     }
     
+    /**
+     * Rounds a number to two decimal places
+     * @param n a number to round
+     * @return a number rounded to two decimal places
+     */
     private double round2places(double n) {
     	return Math.round(n * 100) / 100.0;
     }
