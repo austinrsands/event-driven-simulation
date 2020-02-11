@@ -46,6 +46,19 @@ public class EventPriorityQueue {
     public int getSize() {
         return eventPriorityQueue.size();
     }
+    
+    /**
+     * Returns a String with detail for each event in queue
+     * @return a String with detail for each event in queue
+     */
+    public String toString() {
+    	String eventString = "";
+    	Object[] eventItems = eventPriorityQueue.toArray();
+    	for (int i = 0; i < eventItems.length; i++) {
+    		eventString += eventItems[i].toString() + "\n";
+    	}
+    	return eventString;
+    }
 }
 
 /**

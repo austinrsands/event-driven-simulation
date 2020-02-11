@@ -13,7 +13,7 @@ public class Main {
      * Driver for simulation
      */
     public void run() {
-        Simulation sim = new Simulation(3, 3, 2, 8, 3, 2000);
+        Simulation sim = new Simulation(2, 3, 2, 8, 3, 2000);
         sim.run();
     }
 }

@@ -91,4 +91,17 @@ public class EventQueue {
     public boolean isEmpty() {
         return eventQueue.isEmpty();
     }
+    
+    /**
+     * Returns a String with detail for each event in queue
+     * @return a String with detail for each event in queue
+     */
+    public String toString() {
+    	String eventString = "";
+    	Object[] eventItems = eventQueue.toArray();
+    	for (int i = 0; i < eventItems.length; i++) {
+    		eventString += eventItems[i].toString() + "\n";
+    	}
+    	return eventString;
+    }
 }

@@ -93,6 +93,7 @@ public class Simulation {
                 printSnapshot();
                 snapshotIndex++;
             }
+            
         }
         printStatistics();
     }
@@ -108,6 +109,12 @@ public class Simulation {
         System.out.println("Number of items in event queue: " + eventPriorityQueue.getSize());
         System.out.println();
     }
+    
+//    private void printDiagram() {
+//        for (int i = 0; i < numTellers; i++) {
+//             tellerQueues[i].getCurrentNumber());
+//        }
+//    }
 
     /**
      * Creates an arrival event and adds it to the priority queue
@@ -136,11 +143,14 @@ public class Simulation {
      * Prepares the simulation
      */
     private void initializeVariables() {
+ 
         clock = 0;
         customerCount = 0;
         customerArrivalsCount = 0;
         maximumCustomerWaitTime = 0;
         totalWaitTime = 0;
+        totalInterArrivalTime = 0;
+        totalServiceTime = 0;
         eventPriorityQueue = new EventPriorityQueue();
         createTellersQueues();
     }

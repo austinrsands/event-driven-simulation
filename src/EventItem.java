@@ -41,4 +41,12 @@ public class EventItem {
     public int getTypeOfEvent() {
         return typeOfEvent;
     }
+    
+    /**
+     * Returns a sring containing the details of the event
+     * @return string containing details of event
+     */
+    public String toString() {
+    	return "Time Of Day: " + timeOfDay + ", Service Time: " + serviceTime + ", Type of Event: " + typeOfEvent;
+    }
 }
