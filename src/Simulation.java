@@ -133,10 +133,15 @@ public class Simulation {
      * Creates an arrival event and adds it to the priority queue
      */
     private void createArrivalEvent() {
+        // calculate arrival time and service time
         int arrivalTime = uniformRandom(arrivalTimeMean, arrivalTimeVariance, new Random());
         int serviceTime = uniformRandom(serviceTimeMean, serviceTimeVariance, new Random());
+
+        // create new event and add to priority queue
         EventItem eventItem = new EventItem(clock + arrivalTime, serviceTime, -1);
         eventPriorityQueue.addItem(eventItem);
+
+        // update total interval time, service time, and arrival count
         totalInterArrivalTime += arrivalTime;
         totalServiceTime += serviceTime;
         customerArrivalsCount++;
@@ -156,7 +161,6 @@ public class Simulation {
      * Prepares the simulation
      */
     private void initializeVariables() {
- 
         clock = 0;
         customerCount = 0;
         customerArrivalsCount = 0;
